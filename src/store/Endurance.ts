@@ -1,15 +1,31 @@
-import { makeAutoObservable } from "mobx";
+import { create } from "zustand";
 
-import { IPerk } from "../entities/Perk";
+import { PerkStoreData } from "../types/Perk";
+import { SPECIALS } from "../entities/Specials";
 
-class Endurance {
-  perkList: IPerk[] = [
+export const useEnduranceStore = create<PerkStoreData>((set) => ({
+  perkList: [
     {
       perkId: "leadBelly",
       cost: 1,
       totalAmountOfStars: 3,
       description:
         "Вы получаете на 30% меньше радиации при употреблении пищи и воды",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете на 30% меньше радиации при употреблении пищи и воды";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете на 60% меньше радиации при употреблении пищи и воды";
+        }
+
+        if (stars === 3) {
+          return "Вы получаете не получаете радиации при употреблении пищи и воды";
+        }
+
+        return "";
+      },
       title: "Свинцовое брюхо",
       levelRequirment: 2,
       iconSource: "",
@@ -22,7 +38,22 @@ class Endurance {
       perkId: "dromedary",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Все напитки утоляют жажду на 25% эффективнее",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Все напитки утоляют жажду на 25% эффективнее";
+        }
+
+        if (stars === 2) {
+          return "Все напитки утоляют жажду на 50% эффективнее";
+        }
+
+        if (stars === 3) {
+          return "Все напитки утоляют жажду на 75% эффективнее";
+        }
+
+        return "";
+      },
       title: "Верблюд",
       levelRequirment: 3,
       iconSource: "",
@@ -34,7 +65,21 @@ class Endurance {
       perkId: "ironStomach",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Шанс заразиться от приёма пищи уменьшен на 30% ",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Шанс заразиться от приёма пищи уменьшен на 30%";
+        }
+
+        if (stars === 2) {
+          return "Шанс заразиться от приёма пищи уменьшен на 60%";
+        }
+
+        if (stars === 3) {
+          return "Шанс заразиться от приёма пищи уменьшен на 90%";
+        }
+
+        return "";
+      },
       title: "Железный желудок",
       levelRequirment: 4,
       iconSource: "",
@@ -46,7 +91,22 @@ class Endurance {
       perkId: "slowMetabolizer",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Вся пища утоляет голод на 25% эффективнее",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вся пища утоляет голод на 25% эффективнее";
+        }
+
+        if (stars === 2) {
+          return "Вся пища утоляет голод на 50% эффективнее";
+        }
+
+        if (stars === 3) {
+          return "Вся пища утоляет голод на 75% эффективнее";
+        }
+
+        return "";
+      },
       title: "Медленный метаболизм",
       levelRequirment: 5,
       iconSource: "",
@@ -58,7 +118,22 @@ class Endurance {
       perkId: "thirstQuencher",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Шанс заразиться от выпитых напитков уменьшен на 30% ",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Шанс заразиться от выпитых напитков уменьшен на 30%";
+        }
+
+        if (stars === 2) {
+          return "Шанс заразиться от выпитых напитков уменьшен на 60%";
+        }
+
+        if (stars === 3) {
+          return "Шанс заразиться от выпитых напитков уменьшен на 90%";
+        }
+
+        return "";
+      },
       title: "Утолитель жажды",
       levelRequirment: 6,
       iconSource: "",
@@ -70,7 +145,14 @@ class Endurance {
       perkId: "goodDoggy",
       cost: 1,
       totalAmountOfStars: 1,
-      description: "Увеличивает эффективность собачьих консервов в три раза",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Увеличивает эффективность собачьих консервов в три раза";
+        }
+
+        return "";
+      },
       title: "Хороший пёсик",
       levelRequirment: 8,
       iconSource: "",
@@ -83,6 +165,21 @@ class Endurance {
       cost: 1,
       totalAmountOfStars: 3,
       description: "Шанс заразиться от окружающей среды уменьшен на 30%",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Шанс заразиться от окружающей среды уменьшен на 30%";
+        }
+
+        if (stars === 2) {
+          return "Шанс заразиться от окружающей среды уменьшен на 60%";
+        }
+
+        if (stars === 3) {
+          return "Шанс заразиться от окружающей среды уменьшен на 90%";
+        }
+
+        return "";
+      },
       title: "Естественная сопротивляемость",
       levelRequirment: 10,
       iconSource: "",
@@ -94,7 +191,18 @@ class Endurance {
       perkId: "hydroFix",
       cost: 1,
       totalAmountOfStars: 2,
-      description: "Употребление химии вызывает на 50%  меньше жажды",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Употребление химии вызывает на 50%  меньше жажды";
+        }
+
+        if (stars === 2) {
+          return "Употребление химии вызывает не вызывает жажды";
+        }
+
+        return "";
+      },
       title: "Подавление жажды",
       levelRequirment: 11,
       iconSource: "",
@@ -106,8 +214,18 @@ class Endurance {
       perkId: "rejuvenated",
       cost: 1,
       totalAmountOfStars: 2,
-      description:
-        "Вы получаете увеличенные бонусы от эффектов сытости и гидратации",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете увеличенные бонусы от эффектов сытости и гидратации";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете  значительно увеличенные бонусы от эффектов сытости и гидратации";
+        }
+
+        return "";
+      },
       title: "Обновленный",
       levelRequirment: 12,
       iconSource: "",
@@ -119,7 +237,18 @@ class Endurance {
       perkId: "colaNut",
       cost: 1,
       totalAmountOfStars: 2,
-      description: "Вы получаете двойные бонусы от ядер-колы",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете двойные бонусы от ядер-колы";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете тройные бонусы от ядер-колы";
+        }
+
+        return "";
+      },
       title: "Супер-кола",
       levelRequirment: 14,
       iconSource: "",
@@ -132,8 +261,22 @@ class Endurance {
       perkId: "cannibal",
       cost: 1,
       totalAmountOfStars: 3,
-      description:
-        "Поедая трупы гулей, супер-мутантов, горелых, и кротов-шахтёров вы восстанавливаете здоровье и голод",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Поедая трупы гулей, супер-мутантов, горелых, и кротов-шахтёров вы восстанавливаете здоровье и голод";
+        }
+
+        if (stars === 2) {
+          return "Поедая трупы гулей, супер-мутантов, горелых, и кротов-шахтёров вы больше восстанавливаете здоровье и голод";
+        }
+
+        if (stars === 3) {
+          return "Поедая трупы гулей, супер-мутантов, горелых, и кротов-шахтёров вы значительно восстанавливаете здоровье и голод";
+        }
+
+        return "";
+      },
       title: "Каннибал",
       levelRequirment: 15,
       iconSource: "",
@@ -145,7 +288,22 @@ class Endurance {
       perkId: "vaccinated",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Шанс заразиться болезнями от существ уменьшен на 30%",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Шанс заразиться болезнями от существ уменьшен на 30%";
+        }
+
+        if (stars === 2) {
+          return "Шанс заразиться болезнями от существ уменьшен на 60%";
+        }
+
+        if (stars === 3) {
+          return "Шанс заразиться болезнями от существ уменьшен на 90%";
+        }
+
+        return "";
+      },
       title: "Вакцинация",
       levelRequirment: 16,
       iconSource: "",
@@ -157,7 +315,18 @@ class Endurance {
       perkId: "munchyResistance",
       cost: 1,
       totalAmountOfStars: 2,
-      description: "Шанс получить зависимость от препарата уменьшен на 50%",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Шанс получить зависимость от препарата уменьшен на 50%";
+        }
+
+        if (stars === 2) {
+          return "Вы больше не можете получить зависимость от препаратов";
+        }
+
+        return "";
+      },
       title: "Чистая жизнь",
       levelRequirment: 17,
       iconSource: "",
@@ -169,35 +338,73 @@ class Endurance {
       perkId: "homebody",
       cost: 1,
       totalAmountOfStars: 2,
-      description: "Вы регенерируете здоровье, пока вы находитесь в CAMP",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы регенерируете здоровье, пока вы находитесь в CAMP";
+        }
+
+        if (stars === 2) {
+          return "Вы значительно регенерируете здоровье, а также восстанавливаете конечности, пока находитесь в CAMP";
+        }
+
+        return "";
+      },
       title: "Домосед",
       levelRequirment: 19,
       iconSource: "",
       modificator: 50,
       modificatorStep: 50,
-      getCustomDescription:
-        "Вы регенерируете здоровье и конечности быстрее, пока вы находитесь в CAMP",
       selectedStars: 0,
     },
     {
       perkId: "adamantiumSkeleton",
       cost: 1,
-      totalAmountOfStars: 2,
-      description: "Ваши конечности получают на 30% меньше урона",
+      totalAmountOfStars: 3,
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Ваши конечности получают на 30% меньше урона";
+        }
+
+        if (stars === 2) {
+          return "Ваши конечности получают на 60% меньше урона";
+        }
+
+        if (stars === 3) {
+          return "Ваши конечности не получают  урона";
+        }
+
+        return "";
+      },
       title: "Алмазный скелет",
       levelRequirment: 21,
       iconSource: "",
       modificator: 30,
       modificatorStep: 30,
-      getCustomDescription: "Ваши конечности не получают урона",
+
       selectedStars: 0,
     },
     {
       perkId: "solarPowered",
       cost: 1,
       totalAmountOfStars: 3,
-      description:
-        "Вы получаете +1 к силе и выносливости между 6 утра и 6 вечера.",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете +1 к силе и выносливости между 6 утра и 6 вечера.";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете +2 к силе и выносливости между 6 утра и 6 вечера.";
+        }
+
+        if (stars === 3) {
+          return "Вы получаете +3 к силе и выносливости между 6 утра и 6 вечера.";
+        }
+
+        return "";
+      },
       title: "Солнечная батарейка",
       levelRequirment: 22,
       iconSource: "",
@@ -209,21 +416,42 @@ class Endurance {
       perkId: "chemFiend",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Эффекты от употребления химии на 30% дольше",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Эффекты от употребления химии на 30% дольше";
+        }
+
+        if (stars === 2) {
+          return "Эффекты от употребления химии на 60% дольше";
+        }
+
+        if (stars === 3) {
+          return "Эффекты от употребления химии вдвое дольше";
+        }
+
+        return "";
+      },
       title: "Чёрт на препаратах",
       levelRequirment: 23,
       iconSource: "",
       modificator: 30,
       modificatorStep: 30,
-      getCustomDescription: "Эффекты от употребления химии в два раза дольше",
+
       selectedStars: 0,
     },
     {
       perkId: "aquaboy",
       cost: 1,
       totalAmountOfStars: 1,
-      description:
-        "Вы больше не получаете радиации от плавания в воде и можете дышать под водой.",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы больше не получаете радиации от плавания в воде и можете дышать под водой.";
+        }
+
+        return "";
+      },
       title: "Аквамальчик/Аквадевочка",
       levelRequirment: 26,
       iconSource: "",
@@ -235,7 +463,22 @@ class Endurance {
       perkId: "fireproof",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Вы получаете на 15% меньше урона от взрывов и урона огнем",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете на 15% меньше урона от взрывов и урона огнем";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете на 30% меньше урона от взрывов и урона огнем";
+        }
+
+        if (stars === 3) {
+          return "Вы получаете на 45% меньше урона от взрывов и урона огнем";
+        }
+
+        return "";
+      },
       title: "Огнеупорный",
       levelRequirment: 27,
       iconSource: "",
@@ -247,8 +490,18 @@ class Endurance {
       perkId: "nocturnalFortitude",
       cost: 1,
       totalAmountOfStars: 2,
-      description:
-        "Вы получаете 20 единиц к максимальному здоровью между 6 вечера и 6 утра",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете 20 единиц к максимальному здоровью между 6 вечера и 6 утра";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете 40 единиц к максимальному здоровью между 6 вечера и 6 утра";
+        }
+
+        return "";
+      },
       title: "Ночная отвага",
       levelRequirment: 29,
       iconSource: "",
@@ -260,8 +513,29 @@ class Endurance {
       perkId: "ironclad",
       cost: 1,
       totalAmountOfStars: 5,
-      description:
-        "Вы получаете +10 к сопротивлению обычному и энергетическому урону , если не носите силовой брони",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете +10 к сопротивлению обычному и энергетическому урону , если не носите силовой брони";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете +20 к сопротивлению обычному и энергетическому урону , если не носите силовой брони";
+        }
+
+        if (stars === 3) {
+          return "Вы получаете +30 к сопротивлению обычному и энергетическому урону , если не носите силовой брони";
+        }
+
+        if (stars === 4) {
+          return "Вы получаете +40 к сопротивлению обычному и энергетическому урону , если не носите силовой брони";
+        }
+
+        if (stars === 5) {
+          return "Вы получаете +50 к сопротивлению обычному и энергетическому урону , если не носите силовой брони";
+        }
+
+        return "";
+      },
       title: "Броненосец",
       levelRequirment: 30,
       iconSource: "",
@@ -273,8 +547,18 @@ class Endurance {
       perkId: "revenant",
       cost: 1,
       totalAmountOfStars: 2,
-      description:
-        "Вы получаете +25% к урону на две минуты после воскрешения другим игроком",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете +25% к урону на две минуты после воскрешения другим игроком";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете +50% к урону на две минуты после воскрешения другим игроком";
+        }
+
+        return "";
+      },
       title: "Выживший",
       levelRequirment: 32,
       iconSource: "",
@@ -286,7 +570,26 @@ class Endurance {
       perkId: "radResistant",
       cost: 1,
       totalAmountOfStars: 4,
-      description: "Вы получаете +10 к сопротивлению радиации",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете +10 к сопротивлению радиации";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете +20 к сопротивлению радиации";
+        }
+
+        if (stars === 3) {
+          return "Вы получаете +30 к сопротивлению радиации";
+        }
+
+        if (stars === 4) {
+          return "Вы получаете +40 к сопротивлению радиации";
+        }
+
+        return "";
+      },
       title: "Рад-сопротивляемость",
       levelRequirment: 34,
       iconSource: "",
@@ -298,8 +601,22 @@ class Endurance {
       perkId: "ghoulish",
       cost: 1,
       totalAmountOfStars: 3,
-      description:
-        "Радиоактивное облучение восстанавливает вам по 0.5 здоровья за каждую 1 единицу урона от радиации",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Радиоактивное облучение восстанавливает вам отсутствующее здоровье";
+        }
+
+        if (stars === 2) {
+          return "Радиоактивное облучение восстанавливает вам больше отсутствующее здоровье";
+        }
+
+        if (stars === 3) {
+          return "Радиоактивное облучение восстанавливает вам еще больше отсутствующее здоровье";
+        }
+
+        return "";
+      },
       title: "Гулификация",
       levelRequirment: 36,
       iconSource: "",
@@ -311,8 +628,14 @@ class Endurance {
       perkId: "radicool",
       cost: 1,
       totalAmountOfStars: 1,
-      description:
-        "Чем больше вы радиоактивны - тем больше ваша сила (+5 макс.)",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Чем больше вы радиоактивны - тем больше ваша сила (+5 макс.)";
+        }
+
+        return "";
+      },
       title: "Радикрутость",
       levelRequirment: 38,
       iconSource: "",
@@ -324,7 +647,14 @@ class Endurance {
       perkId: "professionalDrinker",
       cost: 3,
       totalAmountOfStars: 1,
-      description: "У вас нет шанса получить алкогольную зависимость",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "У вас нет шанса получить алкогольную зависимость";
+        }
+
+        return "";
+      },
       title: "Профессиональный алкоголик",
       levelRequirment: 39,
       iconSource: "",
@@ -337,6 +667,22 @@ class Endurance {
       cost: 1,
       totalAmountOfStars: 3,
       description: "Жажда и голод наступают на 20% медленнее ночью",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Жажда и голод наступают на 20% медленнее ночью";
+        }
+
+        if (stars === 2) {
+          return "Жажда и голод наступают на 40% медленнее ночью";
+        }
+
+        if (stars === 3) {
+          return "Жажда и голод наступают на 60% медленнее ночью";
+        }
+
+        return "";
+      },
       title: "Всю ночь",
       levelRequirment: 41,
       iconSource: "",
@@ -347,52 +693,96 @@ class Endurance {
     {
       perkId: "chemResistant",
       cost: 1,
-      totalAmountOfStars: 3,
-      description: "Шанс получить зависимость от препаратов на 50% меньше",
+      totalAmountOfStars: 2,
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Шанс получить зависимость от препаратов на 50% меньше";
+        }
+
+        if (stars === 2) {
+          return "Шанс не можете получить зависимость от препаратов";
+        }
+
+        return "";
+      },
       title: "Чистая жизнь",
       levelRequirment: 43,
       iconSource: "",
       modificator: 50,
       modificatorStep: 50,
-      getCustomDescription:
-        "Вы получаете иммунитет к зависимости от препаратов",
+
       selectedStars: 0,
     },
     {
       perkId: "sunKissed",
       cost: 1,
       totalAmountOfStars: 2,
-      description:
-        "Вы медленно восстанавливаетесь от радиации между 6 утра и 6 вечера",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы медленно восстанавливаетесь от радиации между 6 утра и 6 вечера";
+        }
+
+        if (stars === 2) {
+          return "Вы ускоренно восстанавливаетесь от радиации между 6 утра и 6 вечера";
+        }
+
+        return "";
+      },
       title: "Поцелованный солнцем",
       levelRequirment: 45,
       iconSource: "",
       modificator: 1,
       modificatorStep: 1,
-      getCustomDescription:
-        "Вы быстрее восстанавливаетесь от радиации между 6 утра и 6 вечера",
+
       selectedStars: 0,
     },
     {
       perkId: "photoSynthetic",
       cost: 1,
       totalAmountOfStars: 2,
-      description:
-        "Вы медленно восстанавливаете здоровье между 6 утра и 6 вечера",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы медленно восстанавливаете здоровье между 6 утра и 6 вечера";
+        }
+
+        if (stars === 2) {
+          return "Вы быстрее восстанавливаете здоровье между 6 утра и 6 вечера";
+        }
+
+        return "";
+      },
       title: "Фотосинтез",
       levelRequirment: 47,
       iconSource: "",
       modificator: 1,
       modificatorStep: 1,
-      getCustomDescription:
-        "Вы быстрее восстанавливаете здоровье между 6 утра и 6 вечера",
+
       selectedStars: 0,
     },
     {
       perkId: "lifegiver",
       cost: 1,
-      totalAmountOfStars: 4,
+      totalAmountOfStars: 3,
       description: "Вы получаете +15 к максимальному здоровью",
+
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете +15 к максимальному здоровью";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете +30 к максимальному здоровью";
+        }
+
+        if (stars === 3) {
+          return "Вы получаете +45 к максимальному здоровью";
+        }
+
+        return "";
+      },
       title: "Фонтан жизни",
       levelRequirment: 50,
       iconSource: "",
@@ -401,11 +791,7 @@ class Endurance {
       selectedStars: 0,
       initialCost: 2,
     },
-  ];
-
-  constructor() {
-    makeAutoObservable(this);
-  }
-}
-
-export default new Endurance();
+  ],
+  type: SPECIALS.ENDURANCE,
+  // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+}));

@@ -1,9 +1,10 @@
-import { makeAutoObservable } from "mobx";
+import { create } from "zustand";
 
-import { IPerk } from "../entities/Perk";
+import { PerkStoreData } from "../types/Perk";
+import { SPECIALS } from "../entities/Specials";
 
-class Luck {
-  perkList: IPerk[] = [
+export const useLuckStore = create<PerkStoreData>((set) => ({
+  perkList: [
     {
       perkId: "pharmaFarma",
       cost: 1,
@@ -188,7 +189,7 @@ class Luck {
       cost: 1,
       totalAmountOfStars: 3,
       description: "К вам на помощь в режиме VATS приходит незнакомец",
-      getDescriptionBasedOnStars: (stars) => {
+      getDescriptionBasedOnStars: (stars: number) => {
         if (stars === 1) {
           return "К вам на помощь в режиме VATS иногда приходит незнакомец";
         }
@@ -228,7 +229,7 @@ class Luck {
       totalAmountOfStars: 3,
       description:
         "Каждое попадаение в режиме ватс имеет шанс заполнить шкалу критического урона",
-      getDescriptionBasedOnStars: (stars) => {
+      getDescriptionBasedOnStars: (stars: number) => {
         if (stars === 1) {
           return "Каждое попадаение в режиме ватс имеет шанс заполнить шкалу критического урона";
         }
@@ -440,11 +441,7 @@ class Luck {
       modificatorStep: 10,
       selectedStars: 0,
     },
-  ];
-
-  constructor() {
-    makeAutoObservable(this);
-  }
-}
-
-export default new Luck();
+  ],
+  type: SPECIALS.LUCK,
+  // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+}));

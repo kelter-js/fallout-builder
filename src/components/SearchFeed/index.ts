@@ -1,0 +1,1 @@
+export { SearchFeed } from "./SearchFeed";

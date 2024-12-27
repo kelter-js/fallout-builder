@@ -1,9 +1,10 @@
-import { makeAutoObservable } from "mobx";
+import { create } from "zustand";
 
-import { IPerk } from "../entities/Perk";
+import { IPerk, PerkStoreData } from "../types/Perk";
+import { SPECIALS } from "../entities/Specials";
 
-class Strength {
-  perkList: IPerk[] = [
+export const useStrengthStore = create<PerkStoreData>((set) => ({
+  perkList: [
     {
       perkId: "gladiator",
       cost: 1,
@@ -385,11 +386,7 @@ class Strength {
       modificatorStep: 5,
       selectedStars: 0,
     },
-  ];
-
-  constructor() {
-    makeAutoObservable(this);
-  }
-}
-
-export default new Strength();
+  ],
+  type: SPECIALS.STRENGTH,
+  // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+}));

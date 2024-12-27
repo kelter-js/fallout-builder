@@ -1,9 +1,10 @@
-import { makeAutoObservable } from "mobx";
+import { create } from "zustand";
 
-import { IPerk } from "../entities/Perk";
+import { PerkStoreData } from "../types/Perk";
+import { SPECIALS } from "../entities/Specials";
 
-class Perception {
-  perkList: IPerk[] = [
+export const usePerceptionStore = create<PerkStoreData>((set) => ({
+  perkList: [
     {
       perkId: "concetratedFire",
       cost: 1,
@@ -434,11 +435,7 @@ class Perception {
       modificatorStep: 1,
       selectedStars: 0,
     },
-  ];
-
-  constructor() {
-    makeAutoObservable(this);
-  }
-}
-
-export default new Perception();
+  ],
+  type: SPECIALS.PERCEPTION,
+  // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+}));

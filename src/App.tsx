@@ -1,19 +1,34 @@
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <p>
-        Edit <code>src/App.tsx</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
-);
+import { Calculator } from "./components/Calculator";
+import { SearchFeed } from "./components/SearchFeed";
+import { Container } from "./components/Container";
+import { Header } from "./components/Header";
+import { SpecialTags } from "./SpecialTags";
+import { useState } from "react";
+import { SPECIALS } from "./entities/Specials";
+import { usePerksStore } from "./hooks/usePerksStore";
+
+const App = () => {
+  const [selectedTag, setSelectedTag] = useState<SPECIALS>(SPECIALS.STRENGTH);
+  const data = usePerksStore(selectedTag);
+  console.log(data);
+
+  return (
+    <div className="App">
+      <Header />
+
+      <Container>
+        <Calculator />
+        <SpecialTags
+          selectedTag={selectedTag}
+          setSelectedTag={setSelectedTag}
+        />
+        {data?.map((item) => (
+          <img src={item.iconSource} />
+        ))}
+        <SearchFeed />
+      </Container>
+    </div>
+  );
+};
 
 export default App;

@@ -1,10 +1,12 @@
+import { SPECIALS } from "../entities/Specials";
+
 export interface IPerk {
   perkId: string;
   totalAmountOfStars: number;
   cost: number;
   initialCost?: number;
   selectedStars: number;
-  description: string;
+  description?: string;
   title: string;
   levelRequirment: number;
   iconSource: string;
@@ -17,4 +19,9 @@ export interface IPerk {
   getDescriptionBasedOnStars?: (amountOfStars: number) => string;
   getCustomDescription?: string;
   perkData?: { [key: string]: number };
+}
+
+export interface PerkStoreData {
+  perkList: IPerk[];
+  type: SPECIALS;
 }
