@@ -16,7 +16,7 @@ export interface IPerk {
   maxModificatorStep?: number;
   sideModificator?: number;
   sideModificatorStep?: number;
-  getDescriptionBasedOnStars?: (amountOfStars: number) => string;
+  getDescriptionBasedOnStars: (amountOfStars: number) => string;
   getCustomDescription?: string;
   perkData?: { [key: string]: number };
 }

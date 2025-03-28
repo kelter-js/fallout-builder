@@ -1,390 +1,781 @@
 import { create } from "zustand";
 
-import { IPerk, PerkStoreData } from "../types/Perk";
+import { PerkStoreData } from "../types/Perk";
 import { SPECIALS } from "../entities/Specials";
 
 export const useStrengthStore = create<PerkStoreData>((set) => ({
   perkList: [
     {
+      perkId: "slugger",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Урон от двуручного оружия ближнего боя повышен на 10%";
+        }
+
+        if (stars === 2) {
+          return "Урон от двуручного оружия ближнего боя повышен на 15%";
+        }
+
+        if (stars === 3) {
+          return "Урон от двуручного оружия ближнего боя повышен на 20%";
+        }
+
+        return "Урон от двуручного оружия ближнего боя повышен на 10%";
+      },
+      title: "Мастер мощных ударов",
+      levelRequirment: 2,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Slugger.png`,
+      modificator: 10,
+      modificatorStep: 5,
+      selectedStars: 1,
+    },
+    {
       perkId: "gladiator",
       cost: 1,
       totalAmountOfStars: 3,
-      description:
-        "Ваше одноручное оружие ближнего боя наносит на 10% больше урона",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Ваше одноручное оружие ближнего боя наносит на 10% больше урона";
+        }
+
+        if (stars === 2) {
+          return "Ваше одноручное оружие ближнего боя наносит на 15% больше урона";
+        }
+
+        if (stars === 3) {
+          return "Ваше одноручное оружие ближнего боя наносит на 20% больше урона";
+        }
+
+        return "Ваше одноручное оружие ближнего боя наносит на 10% больше урона";
+      },
       title: "Гладиатор",
       levelRequirment: 2,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Gladiator.png`,
       modificator: 10,
       modificatorStep: 5,
-      selectedStars: 0,
-    },
-    {
-      perkId: "travelingPharmacy",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description: "Вес всех препаратов (включая стимпаки) уменьшен на 30%",
-      title: "Странствующая аптека",
-      levelRequirment: 3,
-      iconSource: "",
-      modificator: 30,
-      modificatorStep: 30,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "ironFist",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Урон от ударов кулаками повышен на 10%",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Урон от ударов кулаками повышен на 10%";
+        }
+
+        if (stars === 2) {
+          return "Урон от ударов кулаками повышен на 15%";
+        }
+
+        if (stars === 3) {
+          return "Урон от ударов кулаками повышен на 20%";
+        }
+
+        return "Урон от ударов кулаками повышен на 10%";
+      },
       title: "Железный кулак",
+      levelRequirment: 2,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Iron_Fist.png`,
+      modificator: 10,
+      modificatorStep: 5,
+      selectedStars: 1,
+    },
+    {
+      perkId: "travelingPharmacy",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вес всех препаратов (включая стимпаки) уменьшен на 30%";
+        }
+
+        if (stars === 2) {
+          return "Вес всех препаратов (включая стимпаки) уменьшен на 60%";
+        }
+
+        if (stars === 3) {
+          return "Вес всех препаратов (включая стимпаки) уменьшен на 90%";
+        }
+
+        return "Вес всех препаратов (включая стимпаки) уменьшен на 30%";
+      },
+      title: "Странствующая аптека",
       levelRequirment: 3,
-      iconSource: "",
-      modificator: 10,
-      modificatorStep: 5,
-      selectedStars: 0,
-    },
-    {
-      perkId: "slugger",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description: "Урон от двуручного оружия ближнего боя повышен на 10%",
-      title: "Мастер мощных ударов",
-      levelRequirment: 6,
-      iconSource: "",
-      modificator: 10,
-      modificatorStep: 5,
-      selectedStars: 0,
-    },
-    {
-      perkId: "packRat",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description: "Вес хлама в инвентаре снижен на 25%",
-      title: "Барахольщик",
-      levelRequirment: 7,
-      iconSource: "",
-      modificator: 25,
-      modificatorStep: 25,
-      selectedStars: 0,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Traveling_Pharmacy.png`,
+      modificator: 30,
+      modificatorStep: 30,
+      selectedStars: 1,
     },
     {
       perkId: "shotGunner",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Урон от дробовиков увеличен на 10%",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Урон от дробовиков увеличен на 10%";
+        }
+
+        if (stars === 2) {
+          return "Урон от дробовиков увеличен на 15%";
+        }
+
+        if (stars === 3) {
+          return "Урон от дробовиков увеличен на 20%";
+        }
+
+        return "Урон от дробовиков увеличен на 10%";
+      },
       title: "Стрелок из дробовика",
       levelRequirment: 10,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Shotgunner.png`,
       modificator: 10,
       modificatorStep: 5,
-      selectedStars: 0,
+      selectedStars: 1,
+    },
+    {
+      perkId: "packRat",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вес хлама в инвентаре снижен на 25%";
+        }
+
+        if (stars === 2) {
+          return "Вес хлама в инвентаре снижен на 50%";
+        }
+
+        if (stars === 3) {
+          return "Вес хлама в инвентаре снижен на 75%";
+        }
+
+        return "Вес хлама в инвентаре снижен на 25%";
+      },
+      title: "Барахольщик",
+      levelRequirment: 7,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Pack_Rat.png`,
+      modificator: 25,
+      modificatorStep: 25,
+      selectedStars: 1,
     },
     {
       perkId: "basher",
       cost: 1,
       totalAmountOfStars: 2,
-      description:
-        "Урон прикладами увеличен на 25%, имеется 5% шанс сломать конечно противнику",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Урон прикладами увеличен на 25%, имеется 5% шанс сломать конечно противнику";
+        }
+
+        if (stars === 2) {
+          return "Урон прикладами увеличен на 50%, имеется 10% шанс сломать конечно противнику";
+        }
+
+        return "Урон прикладами увеличен на 25%, имеется 5% шанс сломать конечно противнику";
+      },
       title: "Хрясь!",
       levelRequirment: 11,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Basher.png`,
       modificator: 25,
       modificatorStep: 25,
       sideModificator: 5,
       sideModificatorStep: 5,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "sturdyFrame",
       cost: 1,
       totalAmountOfStars: 2,
-      description: "Вес брони переносимой в инвентаре снижается на 25%",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вес брони переносимой в инвентаре снижается на 25%";
+        }
+
+        if (stars === 2) {
+          return "Вес брони переносимой в инвентаре снижается на 50%";
+        }
+
+        return "Вес брони переносимой в инвентаре снижается на 25%";
+      },
       title: "Прочная рама",
       levelRequirment: 13,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Sturdy_Frame.png`,
       modificator: 25,
       modificatorStep: 25,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "barbarian",
       cost: 1,
       totalAmountOfStars: 3,
-      description:
-        "Каждое очко Силы добавляет +2 к сопротивлению урону (макс 40) (не работает в силовой броне)",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Каждое очко Силы добавляет +2 к сопротивлению урону (макс 40) (не работает в силовой броне)";
+        }
+
+        if (stars === 2) {
+          return "Каждое очко Силы добавляет +3 к сопротивлению урону (макс 60) (не работает в силовой броне)";
+        }
+
+        if (stars === 3) {
+          return "Каждое очко Силы добавляет +4 к сопротивлению урону (макс 80) (не работает в силовой броне)";
+        }
+
+        return "Каждое очко Силы добавляет +2 к сопротивлению урону (макс 40) (не работает в силовой броне)";
+      },
       title: "Варвар",
       levelRequirment: 14,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Barbarian.png`,
       modificator: 2,
       modificatorStep: 1,
       sideModificator: 40,
       sideModificatorStep: 20,
-      selectedStars: 0,
-    },
-    {
-      perkId: "martialArtist",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description:
-        "Ваше оружие ближнего боя весит на 20% меньше, вы сможете атаковать на 10% быстрее",
-      title: "Специалист ближнего боя",
-      levelRequirment: 16,
-      iconSource: "",
-      modificator: 20,
-      modificatorStep: 20,
-      sideModificator: 10,
-      sideModificatorStep: 10,
-      selectedStars: 0,
-    },
-    {
-      perkId: "scatterShot",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description:
-        "Дробовики весят на 30% меньше и вы перезаряжаете их на 10% быстрее",
-      title: "Варвар",
-      levelRequirment: 18,
-      iconSource: "",
-      modificator: 30,
-      modificatorStep: 30,
-      sideModificator: 10,
-      sideModificatorStep: 10,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "expertGladiator",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Одноручное оружие ближнего боя наносит на 10% больше урона",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Ваше одноручное оружие ближнего боя наносит на 10% больше урона";
+        }
+
+        if (stars === 2) {
+          return "Ваше одноручное оружие ближнего боя наносит на 15% больше урона";
+        }
+
+        if (stars === 3) {
+          return "Ваше одноручное оружие ближнего боя наносит на 20% больше урона";
+        }
+
+        return "Ваше одноручное оружие ближнего боя наносит на 10% больше урона";
+      },
       title: "Эксперт гладиатор",
       levelRequirment: 20,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Expert_Gladiator.png`,
       modificator: 10,
       modificatorStep: 5,
-      selectedStars: 0,
-    },
-    {
-      perkId: "blocker",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description: "Вы получаете на 15% меньше урона в ближнем бою",
-      title: "Блокировка",
-      levelRequirment: 21,
-      iconSource: "",
-      modificator: 15,
-      modificatorStep: 15,
-      selectedStars: 0,
-    },
-    {
-      perkId: "bandolier",
-      cost: 1,
-      totalAmountOfStars: 2,
-      description: "Боеприпасы для баллистического оружия весят на 45% меньше",
-      title: "Патронташ",
-      levelRequirment: 22,
-      iconSource: "",
-      modificator: 45,
-      modificatorStep: 45,
-      selectedStars: 0,
-    },
-    {
-      perkId: "expertShotgunner",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description: "Урон при стрельбе из дробовиков увеличен на 10%",
-      title: "Эксперт стрелок из дробовика",
-      levelRequirment: 23,
-      iconSource: "",
-      modificator: 10,
-      modificatorStep: 5,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "expertSlugger",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Урон двуручным оружием ближнего боя увеличен на 10%",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Урон от двуручного оружия ближнего боя повышен на 10%";
+        }
+
+        if (stars === 2) {
+          return "Урон от двуручного оружия ближнего боя повышен на 15%";
+        }
+
+        if (stars === 3) {
+          return "Урон от двуручного оружия ближнего боя повышен на 20%";
+        }
+
+        return "Урон от двуручного оружия ближнего боя повышен на 10%";
+      },
       title: "Эксперт по мощным ударам",
       levelRequirment: 24,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Expert_Slugger.png`,
       modificator: 10,
       modificatorStep: 5,
-      selectedStars: 0,
+      selectedStars: 1,
+    },
+    {
+      perkId: "martialArtist",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Ваше оружие ближнего боя весит на 20% меньше, вы сможете атаковать на 10% быстрее";
+        }
+
+        if (stars === 2) {
+          return "Ваше оружие ближнего боя весит на 20% меньше, вы сможете атаковать на 20% быстрее";
+        }
+
+        if (stars === 3) {
+          return "Ваше оружие ближнего боя весит на 60% меньше, вы сможете атаковать на 30% быстрее";
+        }
+
+        return "Ваше оружие ближнего боя весит на 20% меньше, вы сможете атаковать на 10% быстрее";
+      },
+      title: "Специалист ближнего боя",
+      levelRequirment: 16,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Martial_Artist.png`,
+      modificator: 20,
+      modificatorStep: 20,
+      sideModificator: 10,
+      sideModificatorStep: 10,
+      selectedStars: 1,
+    },
+    {
+      perkId: "scatterShot",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Дробовики весят на 30% меньше и вы перезаряжаете их на 10% быстрее";
+        }
+
+        if (stars === 2) {
+          return "Дробовики весят на 60% меньше и вы перезаряжаете их на 20% быстрее";
+        }
+
+        if (stars === 3) {
+          return "Дробовики весят на 90% меньше и вы перезаряжаете их на 30% быстрее";
+        }
+
+        return "Дробовики весят на 30% меньше и вы перезаряжаете их на 10% быстрее";
+      },
+      title: "Варвар",
+      levelRequirment: 18,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Scattershot.png`,
+      modificator: 30,
+      modificatorStep: 30,
+      sideModificator: 10,
+      sideModificatorStep: 10,
+      selectedStars: 1,
+    },
+    {
+      perkId: "expertShotgunner",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Урон от дробовиков увеличен на 10%";
+        }
+
+        if (stars === 2) {
+          return "Урон от дробовиков увеличен на 15%";
+        }
+
+        if (stars === 3) {
+          return "Урон от дробовиков увеличен на 20%";
+        }
+
+        return "Урон от дробовиков увеличен на 10%";
+      },
+      title: "Эксперт стрелок из дробовика",
+      levelRequirment: 23,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Expert_Shotgunner.png`,
+      modificator: 10,
+      modificatorStep: 5,
+      selectedStars: 1,
+    },
+    {
+      perkId: "blocker",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете на 15% меньше урона в ближнем бою";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете на 30% меньше урона в ближнем бою";
+        }
+
+        if (stars === 3) {
+          return "Вы получаете на 45% меньше урона в ближнем бою";
+        }
+
+        return "Вы получаете на 15% меньше урона в ближнем бою";
+      },
+      title: "Блокировка",
+      levelRequirment: 21,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Blocker.png`,
+      modificator: 15,
+      modificatorStep: 15,
+      selectedStars: 1,
+    },
+    {
+      perkId: "bandolier",
+      cost: 1,
+      totalAmountOfStars: 2,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Боеприпасы для баллистического оружия весят на 45% меньше";
+        }
+
+        if (stars === 2) {
+          return "Боеприпасы для баллистического оружия весят на 90% меньше";
+        }
+
+        return "Боеприпасы для баллистического оружия весят на 45% меньше";
+      },
+      title: "Патронташ",
+      levelRequirment: 22,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Bandolier.png`,
+      modificator: 45,
+      modificatorStep: 45,
+      selectedStars: 1,
     },
     {
       perkId: "strongBack",
       cost: 1,
       totalAmountOfStars: 4,
-      description: "Увеличивает переносимый вес на 10 фунтов",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Увеличивает переносимый вес на 10 фунтов";
+        }
+
+        if (stars === 2) {
+          return "Увеличивает переносимый вес на 20 фунтов";
+        }
+
+        if (stars === 3) {
+          return "Увеличивает переносимый вес на 30 фунтов";
+        }
+
+        if (stars === 4) {
+          return "Увеличивает переносимый вес на 40 фунтов";
+        }
+
+        return "Увеличивает переносимый вес на 10 фунтов";
+      },
       title: "Крепкий хребет",
       levelRequirment: 26,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Strong_Back.png`,
       modificator: 10,
       modificatorStep: 10,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "heavyGunner",
       cost: 1,
-      totalAmountOfStars: 4,
-      description:
-        "Ваше невзрывное тяжелое оружие наносит теперь на 10% больше урона",
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Ваше невзрывное тяжелое оружие наносит теперь на 10% больше урона";
+        }
+
+        if (stars === 2) {
+          return "Ваше невзрывное тяжелое оружие наносит теперь на 15% больше урона";
+        }
+
+        if (stars === 3) {
+          return "Ваше невзрывное тяжелое оружие наносит теперь на 20% больше урона";
+        }
+
+        return "Ваше невзрывное тяжелое оружие наносит теперь на 10% больше урона";
+      },
       title: "Фанат больших пушек",
       levelRequirment: 30,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Heavy_Gunner.png`,
       modificator: 10,
       modificatorStep: 5,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "ordnanceExpress",
       cost: 1,
-      totalAmountOfStars: 3,
-      description: "Уменьшает метаемой вес взрывчатки на 30%",
+      totalAmountOfStars: 2,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Взрывчатка весит на 45% меньше";
+        }
+
+        if (stars === 2) {
+          return "Взрывчатка весит на 90% меньше";
+        }
+
+        return "Взрывчатка весит на 45% меньше";
+      },
       title: "Сверхбыстрый боезаряд",
       levelRequirment: 31,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Ordnance_Express.png`,
       modificator: 30,
       modificatorStep: 30,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "fullCharge",
       cost: 1,
       totalAmountOfStars: 2,
-      description:
-        "При ускорении в силовой броне расходуется на 50% меньше энергии ядерных блоков",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "При ускорении в силовой броне расходуется на 50% меньше энергии ядерных блоков";
+        }
+
+        if (stars === 2) {
+          return "При ускорении в силовой броне ядерный блок не потребляет дополнительно энергии";
+        }
+
+        return "При ускорении в силовой броне расходуется на 50% меньше энергии ядерных блоков";
+      },
       title: "Полный заряд",
       levelRequirment: 33,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Full_Charge.png`,
       modificator: 50,
       modificatorStep: 50,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "incisor",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Снижение эффективности защиты брони противника на 25%",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Ваши атаки ближнего боя игнорируют 25% брони противника";
+        }
+
+        if (stars === 2) {
+          return "Ваши атаки ближнего боя игнорируют 50% брони противника";
+        }
+
+        if (stars === 3) {
+          return "Ваши атаки ближнего боя игнорируют 75% брони противника";
+        }
+
+        return "Ваши атаки ближнего боя игнорируют 25% брони противника";
+      },
       title: "Резец",
       levelRequirment: 34,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Incisor.png`,
       modificator: 25,
       modificatorStep: 25,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "bearArms",
       cost: 1,
       totalAmountOfStars: 3,
-      description: "Тяжелое оружие весит меньше на 30%",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Тяжелое оружие весит меньше на 30%";
+        }
+
+        if (stars === 2) {
+          return "Тяжелое оружие весит меньше на 60%";
+        }
+
+        if (stars === 3) {
+          return "Тяжелое оружие весит меньше на 90%";
+        }
+
+        return "Тяжелое оружие весит меньше на 30%";
+      },
       title: "Медвежьи лапищи",
       levelRequirment: 35,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Bear_Arms.png`,
       modificator: 30,
       modificatorStep: 30,
-      selectedStars: 0,
-    },
-    {
-      perkId: "lockAndLoad",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description: "Тяжелое оружие перезаряжается на 10% быстрее",
-      title: "Полная боеготовность",
-      levelRequirment: 37,
-      iconSource: "",
-      modificator: 10,
-      modificatorStep: 10,
-      selectedStars: 0,
-    },
-    {
-      perkId: "bulletShield",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description:
-        "Вы получаете +20 к сопротивлению урону во время стрельбы из тяжелого оружия",
-      title: "Щит",
-      levelRequirment: 39,
-      iconSource: "",
-      modificator: 20,
-      modificatorStep: 20,
-      selectedStars: 0,
-    },
-    {
-      perkId: "expertHeavyGunner",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description:
-        "Ваше баллистическое(не взрывное) тяжелое оружие наносит на 10% больше урона",
-      title: "Эскперт больших пушек",
-      levelRequirment: 40,
-      iconSource: "",
-      modificator: 10,
-      modificatorStep: 5,
-      selectedStars: 0,
-    },
-    {
-      perkId: "painTrain",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description:
-        "Врезаясь с разбега в противников, находясь в силовой броне, вы наносите им урон и ошеломляете их",
-      title: "Локомотив",
-      levelRequirment: 41,
-      iconSource: "",
-      modificator: 10,
-      modificatorStep: 5,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "masterGladiator",
       cost: 1,
       totalAmountOfStars: 3,
-      description:
-        "Ваше одиночное оружие ближнего боя наносит на 10% больше урона",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Ваше одноручное оружие ближнего боя наносит на 10% больше урона";
+        }
+
+        if (stars === 2) {
+          return "Ваше одноручное оружие ближнего боя наносит на 15% больше урона";
+        }
+
+        if (stars === 3) {
+          return "Ваше одноручное оружие ближнего боя наносит на 20% больше урона";
+        }
+
+        return "Ваше одноручное оружие ближнего боя наносит на 10% больше урона";
+      },
       title: "Локомотив",
       levelRequirment: 43,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Master_Gladiator.png`,
       modificator: 10,
       modificatorStep: 5,
-      selectedStars: 0,
-    },
-    {
-      perkId: "masterShotgunner",
-      cost: 1,
-      totalAmountOfStars: 3,
-      description: "Дробовики наносят на 10% больше урона",
-      title: "Мастер-стрелок из дробовика",
-      levelRequirment: 45,
-      iconSource: "",
-      modificator: 10,
-      modificatorStep: 5,
-      selectedStars: 0,
+      selectedStars: 1,
     },
     {
       perkId: "masterSlugger",
       cost: 1,
       totalAmountOfStars: 3,
-      description:
-        "Ваше двуручное оружие ближнего боя наносит на 10% больше урона",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Урон от двуручного оружия ближнего боя повышен на 10%";
+        }
+
+        if (stars === 2) {
+          return "Урон от двуручного оружия ближнего боя повышен на 15%";
+        }
+
+        if (stars === 3) {
+          return "Урон от двуручного оружия ближнего боя повышен на 20%";
+        }
+
+        return "Урон от двуручного оружия ближнего боя повышен на 10%";
+      },
       title: "Мастер мощных ударов",
       levelRequirment: 48,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Master_Slugger.png`,
       modificator: 10,
       modificatorStep: 5,
-      selectedStars: 0,
+      selectedStars: 1,
+    },
+    {
+      perkId: "lockAndLoad",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Тяжелое оружие перезаряжается на 20% быстрее";
+        }
+
+        if (stars === 2) {
+          return "Тяжелое оружие перезаряжается на 40% быстрее";
+        }
+
+        if (stars === 3) {
+          return "Тяжелое оружие перезаряжается на 60% быстрее";
+        }
+
+        return "Тяжелое оружие перезаряжается на 10% быстрее";
+      },
+      title: "Полная боеготовность",
+      levelRequirment: 37,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Lock_and_Load.png`,
+      modificator: 10,
+      modificatorStep: 10,
+      selectedStars: 1,
+    },
+    {
+      perkId: "bulletShield",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Вы получаете +20 к сопротивлению урону во время стрельбы из тяжелого оружия";
+        }
+
+        if (stars === 2) {
+          return "Вы получаете +40 к сопротивлению урону во время стрельбы из тяжелого оружия";
+        }
+
+        if (stars === 3) {
+          return "Вы получаете +60 к сопротивлению урону во время стрельбы из тяжелого оружия";
+        }
+
+        return "Вы получаете +20 к сопротивлению урону во время стрельбы из тяжелого оружия";
+      },
+      title: "Щит",
+      levelRequirment: 39,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Bullet_Shield.png`,
+      modificator: 20,
+      modificatorStep: 20,
+      selectedStars: 1,
+    },
+    {
+      perkId: "expertHeavyGunner",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Ваше невзрывное тяжелое оружие наносит теперь на 10% больше урона";
+        }
+
+        if (stars === 2) {
+          return "Ваше невзрывное тяжелое оружие наносит теперь на 15% больше урона";
+        }
+
+        if (stars === 3) {
+          return "Ваше невзрывное тяжелое оружие наносит теперь на 20% больше урона";
+        }
+
+        return "Ваше невзрывное тяжелое оружие наносит теперь на 10% больше урона";
+      },
+      title: "Эскперт больших пушек",
+      levelRequirment: 40,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Expert_Heavy_Gunner.png`,
+      modificator: 10,
+      modificatorStep: 5,
+      selectedStars: 1,
+    },
+    {
+      perkId: "masterShotgunner",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Урон от дробовиков увеличен на 10%";
+        }
+
+        if (stars === 2) {
+          return "Урон от дробовиков увеличен на 15%";
+        }
+
+        if (stars === 3) {
+          return "Урон от дробовиков увеличен на 20%";
+        }
+
+        return "Урон от дробовиков увеличен на 10%";
+      },
+      title: "Мастер-стрелок из дробовика",
+      levelRequirment: 45,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Master_Shotgunner.png`,
+      modificator: 10,
+      modificatorStep: 5,
+      selectedStars: 1,
+    },
+    {
+      perkId: "painTrain",
+      cost: 1,
+      totalAmountOfStars: 3,
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Врезаясь с разбега в противников, находясь в силовой броне, вы наносите им урон и ошеломляете их";
+        }
+
+        if (stars === 2) {
+          return "Врезаясь с разбега в противников, находясь в силовой броне, вы наносите им больше урона и ошеломляете их";
+        }
+
+        if (stars === 3) {
+          return "Врезаясь с разбега в противников, находясь в силовой броне, вы наносите им значительный урон и ошеломляете их";
+        }
+
+        return "Врезаясь с разбега в противников, находясь в силовой броне, вы наносите им урон и ошеломляете их";
+      },
+      title: "Локомотив",
+      levelRequirment: 41,
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Pain_Train.png`,
+      modificator: 10,
+      modificatorStep: 5,
+      selectedStars: 1,
     },
     {
       perkId: "masterHeavyGunner",
       cost: 1,
       totalAmountOfStars: 3,
-      description:
-        "Ваше баллистическое(не взрывное) тяжелое оружие наносит на 10% больше урона",
+      getDescriptionBasedOnStars: (stars: number) => {
+        if (stars === 1) {
+          return "Ваше невзрывное тяжелое оружие наносит теперь на 10% больше урона";
+        }
+
+        if (stars === 2) {
+          return "Ваше невзрывное тяжелое оружие наносит теперь на 15% больше урона";
+        }
+
+        if (stars === 3) {
+          return "Ваше невзрывное тяжелое оружие наносит теперь на 20% больше урона";
+        }
+
+        return "Ваше невзрывное тяжелое оружие наносит теперь на 10% больше урона";
+      },
       title: "Мастер больших пушек",
       levelRequirment: 50,
-      iconSource: "",
+      iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Master_Heavy_Gunner.png`,
       modificator: 10,
       modificatorStep: 5,
-      selectedStars: 0,
+      selectedStars: 1,
     },
   ],
   type: SPECIALS.STRENGTH,
