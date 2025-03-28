@@ -1,14 +1,15 @@
-import { useState, ChangeEventHandler } from "react";
+import { useState, ChangeEventHandler, FC } from "react";
 import { InputAdornment, TextField } from "@mui/material";
 
 import { Container, Title } from "./SearchFeed.styled";
+import { SearchFeedProps } from "./types";
 
-export const SearchFeed = () => {
-  const [search, setSearch] = useState("");
-
+export const SearchFeed: FC<SearchFeedProps> = ({ search, setSearch }) => {
   const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearch(e.target.value);
   };
+
+  const clearSearch = () => setSearch("");
 
   return (
     <Container>
@@ -39,7 +40,16 @@ export const SearchFeed = () => {
             <InputAdornment position="start">
               <img
                 src={`${process.env.PUBLIC_URL}/assets/SearchIcon.svg`}
-                alt="React Logo"
+                alt="search Logo"
+              />
+            </InputAdornment>
+          ),
+          endAdornment: search && (
+            <InputAdornment position="end" onClick={clearSearch}>
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/CloseIcon.svg`}
+                alt="clear Logo"
+                style={{ cursor: "pointer" }}
               />
             </InputAdornment>
           ),
