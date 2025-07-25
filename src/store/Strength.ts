@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
-import { PerkStoreData } from "../types/Perk";
+import { DEFAULT_AMOUNT_OF_STARS } from "./constants";
 import { SPECIALS } from "../entities/Specials";
+import { PerkStoreData } from "../types/Perk";
 
 export const useStrengthStore = create<PerkStoreData>((set) => ({
   perkList: [
@@ -27,9 +28,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Мастер мощных ударов",
       levelRequirment: 2,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Slugger.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 0,
     },
     {
       perkId: "gladiator",
@@ -53,9 +54,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Гладиатор",
       levelRequirment: 2,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Gladiator.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 1,
     },
     {
       perkId: "ironFist",
@@ -79,9 +80,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Железный кулак",
       levelRequirment: 2,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Iron_Fist.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 2,
     },
     {
       perkId: "travelingPharmacy",
@@ -105,9 +106,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Странствующая аптека",
       levelRequirment: 3,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Traveling_Pharmacy.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 3,
     },
     {
       perkId: "shotGunner",
@@ -131,9 +132,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Стрелок из дробовика",
       levelRequirment: 10,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Shotgunner.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 4,
     },
     {
       perkId: "packRat",
@@ -157,9 +158,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Барахольщик",
       levelRequirment: 7,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Pack_Rat.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 5,
     },
     {
       perkId: "basher",
@@ -179,11 +180,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Хрясь!",
       levelRequirment: 11,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Basher.png`,
-      modificator: 25,
-      modificatorStep: 25,
-      sideModificator: 5,
-      sideModificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 6,
     },
     {
       perkId: "sturdyFrame",
@@ -203,9 +202,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Прочная рама",
       levelRequirment: 13,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Sturdy_Frame.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 7,
     },
     {
       perkId: "barbarian",
@@ -229,11 +228,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Варвар",
       levelRequirment: 14,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Barbarian.png`,
-      modificator: 2,
-      modificatorStep: 1,
-      sideModificator: 40,
-      sideModificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 8,
     },
     {
       perkId: "expertGladiator",
@@ -257,9 +254,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Эксперт гладиатор",
       levelRequirment: 20,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Expert_Gladiator.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 9,
     },
     {
       perkId: "expertSlugger",
@@ -283,9 +280,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Эксперт по мощным ударам",
       levelRequirment: 24,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Expert_Slugger.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 10,
     },
     {
       perkId: "martialArtist",
@@ -309,11 +306,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Специалист ближнего боя",
       levelRequirment: 16,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Martial_Artist.png`,
-      modificator: 20,
-      modificatorStep: 20,
-      sideModificator: 10,
-      sideModificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 11,
     },
     {
       perkId: "scatterShot",
@@ -337,11 +332,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Варвар",
       levelRequirment: 18,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Scattershot.png`,
-      modificator: 30,
-      modificatorStep: 30,
-      sideModificator: 10,
-      sideModificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 12,
     },
     {
       perkId: "expertShotgunner",
@@ -365,9 +358,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Эксперт стрелок из дробовика",
       levelRequirment: 23,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Expert_Shotgunner.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 13,
     },
     {
       perkId: "blocker",
@@ -391,9 +384,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Блокировка",
       levelRequirment: 21,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Blocker.png`,
-      modificator: 15,
-      modificatorStep: 15,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 14,
     },
     {
       perkId: "bandolier",
@@ -413,9 +406,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Патронташ",
       levelRequirment: 22,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Bandolier.png`,
-      modificator: 45,
-      modificatorStep: 45,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 15,
     },
     {
       perkId: "strongBack",
@@ -443,9 +436,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Крепкий хребет",
       levelRequirment: 26,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Strong_Back.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 16,
     },
     {
       perkId: "heavyGunner",
@@ -469,9 +462,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Фанат больших пушек",
       levelRequirment: 30,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Heavy_Gunner.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 17,
     },
     {
       perkId: "ordnanceExpress",
@@ -491,9 +484,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Сверхбыстрый боезаряд",
       levelRequirment: 31,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Ordnance_Express.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 18,
     },
     {
       perkId: "fullCharge",
@@ -513,9 +506,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Полный заряд",
       levelRequirment: 33,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Full_Charge.png`,
-      modificator: 50,
-      modificatorStep: 50,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 19,
     },
     {
       perkId: "incisor",
@@ -539,9 +532,10 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Резец",
       levelRequirment: 34,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Incisor.png`,
-      modificator: 25,
-      modificatorStep: 25,
+
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 20,
     },
     {
       perkId: "bearArms",
@@ -565,9 +559,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Медвежьи лапищи",
       levelRequirment: 35,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Bear_Arms.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 21,
     },
     {
       perkId: "masterGladiator",
@@ -588,12 +582,12 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
 
         return "Ваше одноручное оружие ближнего боя наносит на 10% больше урона";
       },
-      title: "Локомотив",
+      title: "Мастер гладиатор",
       levelRequirment: 43,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Master_Gladiator.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 22,
     },
     {
       perkId: "masterSlugger",
@@ -617,9 +611,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Мастер мощных ударов",
       levelRequirment: 48,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Master_Slugger.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 23,
     },
     {
       perkId: "lockAndLoad",
@@ -643,9 +637,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Полная боеготовность",
       levelRequirment: 37,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Lock_and_Load.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 24,
     },
     {
       perkId: "bulletShield",
@@ -669,9 +663,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Щит",
       levelRequirment: 39,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Bullet_Shield.png`,
-      modificator: 20,
-      modificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 25,
     },
     {
       perkId: "expertHeavyGunner",
@@ -695,9 +689,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Эскперт больших пушек",
       levelRequirment: 40,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Expert_Heavy_Gunner.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 26,
     },
     {
       perkId: "masterShotgunner",
@@ -721,9 +715,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Мастер-стрелок из дробовика",
       levelRequirment: 45,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Master_Shotgunner.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 27,
     },
     {
       perkId: "painTrain",
@@ -747,9 +741,9 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Локомотив",
       levelRequirment: 41,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Pain_Train.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 28,
     },
     {
       perkId: "masterHeavyGunner",
@@ -773,11 +767,25 @@ export const useStrengthStore = create<PerkStoreData>((set) => ({
       title: "Мастер больших пушек",
       levelRequirment: 50,
       iconSource: `${process.env.PUBLIC_URL}/assets/strength/FO76_Master_Heavy_Gunner.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.STRENGTH,
+      order: 29,
     },
   ],
   type: SPECIALS.STRENGTH,
-  // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+  removePerk: (id) =>
+    set((state) => ({
+      ...state,
+      perkList: state.perkList.filter((perk) => perk.perkId !== id),
+    })),
+  addPerk: (perk) => {
+    const perkData = { ...perk };
+    perkData.selectedStars = DEFAULT_AMOUNT_OF_STARS;
+    set((state) => ({
+      ...state,
+      perkList: [...state.perkList, perkData].sort(
+        (perkA, perkB) => perkA.order - perkB.order
+      ),
+    }));
+  },
 }));

@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
-import { PerkStoreData } from "../types/Perk";
+import { DEFAULT_AMOUNT_OF_STARS } from "./constants";
 import { SPECIALS } from "../entities/Specials";
+import { PerkStoreData } from "../types/Perk";
 
 export const useLuckStore = create<PerkStoreData>((set) => ({
   perkList: [
@@ -27,9 +28,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Арктос фарма",
       levelRequirment: 2,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Pharma_Farma.png`,
-      modificator: 40,
-      modificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 0,
     },
     {
       perkId: "scrounger",
@@ -53,9 +54,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Халявщик",
       levelRequirment: 3,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Scrounger.png`,
-      modificator: 40,
-      modificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 1,
     },
     {
       perkId: "serendipity",
@@ -71,9 +72,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Приятная неожиданность",
       levelRequirment: 5,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Serendipity.png`,
-      modificator: 15,
-      modificatorStep: 15,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 2,
     },
     {
       perkId: "canDo",
@@ -97,9 +98,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Это можно!",
       levelRequirment: 7,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Can_Do.png`,
-      modificator: 40,
-      modificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 3,
     },
     {
       perkId: "goodWithSalt",
@@ -123,9 +124,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Хорошо идёт с солью",
       levelRequirment: 9,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Good_with_Salt.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 4,
     },
     {
       perkId: "junkShield",
@@ -141,9 +142,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Щит из хлама",
       levelRequirment: 10,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Junk_Shield.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 5,
     },
     {
       perkId: "mysteryMeat",
@@ -167,9 +168,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Таинственное мясо",
       levelRequirment: 12,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Mystery_Meat.png`,
-      modificator: 20,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 6,
     },
     {
       perkId: "luckOfTheDraw",
@@ -193,9 +194,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Чистая случайность",
       levelRequirment: 14,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Luck_of_the_Draw.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 7,
     },
     {
       perkId: "capCollector",
@@ -211,9 +212,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Коллекционер крышек",
       levelRequirment: 16,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Cap_Collector.png`,
-      modificator: 33,
-      modificatorStep: 33,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 8,
     },
     {
       perkId: "woodchucker",
@@ -229,9 +230,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Дровосек",
       levelRequirment: 17,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Woodchucker.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 9,
     },
     {
       perkId: "curator",
@@ -247,9 +248,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Куратор",
       levelRequirment: 19,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Curator.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 10,
     },
     {
       perkId: "psychopath",
@@ -273,9 +274,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Психопат",
       levelRequirment: 20,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Psychopath.png`,
-      modificator: 5,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 11,
     },
     {
       perkId: "dryNurse",
@@ -291,9 +292,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Сиделка",
       levelRequirment: 23,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Dry_Nurse.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 12,
     },
     {
       perkId: "luckyBreak",
@@ -317,9 +318,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Счастливый случай",
       levelRequirment: 24,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Lucky_Break.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 13,
     },
     {
       perkId: "mysteriousStranger",
@@ -343,9 +344,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Загадочный незнакомец",
       levelRequirment: 26,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Mysterious_Stranger.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 14,
     },
     {
       perkId: "lastLaugh",
@@ -361,9 +362,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Хорошо смеется тот, кто смеется последним",
       levelRequirment: 27,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Last_Laugh.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 15,
     },
     {
       perkId: "fourLeafClover",
@@ -379,9 +380,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Клевер-четырехлистник",
       levelRequirment: 29,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Four_Leaf_Clover.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 16,
     },
     {
       perkId: "starchedGenes",
@@ -397,9 +398,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Гениальные гены",
       levelRequirment: 30,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Starched_Genes.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 17,
     },
     {
       perkId: "oneGunArmy",
@@ -423,11 +424,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Армия из одного стрелка",
       levelRequirment: 31,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_One_Gun_Army.png`,
-      modificator: 4,
-      modificatorStep: 4,
-      sideModificator: 4,
-      sideModificatorStep: 4,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 18,
     },
     {
       perkId: "grimReapersSprint",
@@ -451,9 +450,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Угрюмый жнец",
       levelRequirment: 33,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Grim_Reaper_Sprint.png`,
-      modificator: 15,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 19,
     },
     {
       perkId: "stormChaser",
@@ -473,9 +472,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Охотник за штормами",
       levelRequirment: 35,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Storm_Chaser.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 20,
     },
     {
       perkId: "tormentor",
@@ -499,11 +498,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Мучитель",
       levelRequirment: 37,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Tormentor.png`,
-      modificator: 5,
-      modificatorStep: 5,
-      sideModificator: 2,
-      sideModificatorStep: 2,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 21,
     },
     {
       perkId: "ricochet",
@@ -519,9 +516,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Рикошет",
       levelRequirment: 38,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Ricochet.png`,
-      modificator: 6,
-      modificatorStep: 6,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 22,
     },
     {
       perkId: "quickHands",
@@ -545,9 +542,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Ловкость рук",
       levelRequirment: 40,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Quick_Hands.png`,
-      modificator: 6,
-      modificatorStep: 6,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 23,
     },
     {
       perkId: "bloodyMess",
@@ -571,9 +568,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Кровавая баня",
       levelRequirment: 42,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Bloody_Mess.png`,
-      modificator: 5,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 24,
     },
     {
       perkId: "criticalSavvy",
@@ -597,9 +594,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Критическое мышление",
       levelRequirment: 44,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Critical_Savvy.png`,
-      modificator: 15,
-      modificatorStep: 15,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 25,
     },
     {
       perkId: "classFreak",
@@ -623,9 +620,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Местный уродец",
       levelRequirment: 46,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Class_Freak.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 26,
     },
     {
       perkId: "betterCriticals",
@@ -649,9 +646,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Повышенный критический урон",
       levelRequirment: 47,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Better_Criticals.png`,
-      modificator: 50,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 27,
     },
     {
       perkId: "mysteriousSavior",
@@ -675,9 +672,9 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Мистический спаситель",
       levelRequirment: 49,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Mysterious_Savior.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 28,
     },
     {
       perkId: "superDuper",
@@ -701,11 +698,25 @@ export const useLuckStore = create<PerkStoreData>((set) => ({
       title: "Супер-пупер",
       levelRequirment: 50,
       iconSource: `${process.env.PUBLIC_URL}/assets/luck/FO76_Super_Duper.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.LUCK,
+      order: 29,
     },
   ],
   type: SPECIALS.LUCK,
-  // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+  removePerk: (id) =>
+    set((state) => ({
+      ...state,
+      perkList: state.perkList.filter((perk) => perk.perkId !== id),
+    })),
+  addPerk: (perk) => {
+    const perkData = { ...perk };
+    perkData.selectedStars = DEFAULT_AMOUNT_OF_STARS;
+    set((state) => ({
+      ...state,
+      perkList: [...state.perkList, perkData].sort(
+        (perkA, perkB) => perkA.order - perkB.order
+      ),
+    }));
+  },
 }));

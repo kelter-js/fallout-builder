@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
-import { PerkStoreData } from "../types/Perk";
+import { DEFAULT_AMOUNT_OF_STARS } from "./constants";
 import { SPECIALS } from "../entities/Specials";
+import { PerkStoreData } from "../types/Perk";
 
 export const useIntelligenceStore = create<PerkStoreData>((set) => ({
   perkList: [
@@ -17,12 +18,11 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
         return "";
       },
       title: "Первая помощь",
-
       levelRequirment: 2,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_First_Aid.png`,
-      modificator: 15,
-      modificatorStep: 15,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 0,
     },
     {
       perkId: "hacker",
@@ -38,11 +38,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Хакер",
       levelRequirment: 4,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Hacker.png`,
-      modificator: 1,
-      modificatorStep: 1,
-      sideModificator: 33,
-      sideModificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 1,
     },
     {
       perkId: "licensedPlumber",
@@ -65,9 +63,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Лицензированный водопроводчик",
       levelRequirment: 5,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Licensed_Plumber.png`,
-      modificator: 20,
-      modificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 2,
     },
     {
       perkId: "pharmacist",
@@ -84,9 +82,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Фармацевт",
       levelRequirment: 6,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Pharmacist.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 3,
     },
     {
       perkId: "makeshiftWarrior",
@@ -115,11 +113,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Самодельный воин",
       levelRequirment: 9,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Makeshift_Warrior.png`,
-      modificator: 10,
-      modificatorStep: 10,
-      sideModificator: 1,
-      sideModificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 4,
     },
     {
       perkId: "demolitionExpert",
@@ -148,9 +144,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Эксперт-подрывник",
       levelRequirment: 10,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Demolition_Expert.png`,
-      modificator: 20,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 5,
     },
     {
       perkId: "gunsmith",
@@ -178,11 +174,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Оружейник",
       levelRequirment: 10,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Gunsmith.png`,
-      modificator: 10,
-      modificatorStep: 10,
-      sideModificator: 1,
-      sideModificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 6,
     },
     {
       perkId: "scrapper",
@@ -198,9 +192,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Драчун",
       levelRequirment: 13,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Scrapper.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 7,
     },
     {
       perkId: "armorer",
@@ -224,9 +218,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Бронник",
       levelRequirment: 15,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Armorer.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 8,
     },
     {
       perkId: "contractor",
@@ -247,9 +241,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Подрядчик",
       levelRequirment: 18,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Contractor.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 9,
     },
     {
       perkId: "science",
@@ -270,9 +264,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Наука",
       levelRequirment: 20,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Science.png`,
-      modificator: 5,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 10,
     },
     {
       perkId: "expertHacker",
@@ -288,11 +282,10 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Эксперт-Хакер",
       levelRequirment: 22,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Expert_Hacker.png`,
-      modificator: 1,
-      modificatorStep: 1,
-      sideModificator: 33,
-      sideModificatorStep: 1,
+
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 11,
     },
     {
       perkId: "portablePower",
@@ -314,9 +307,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Переносная сила",
       levelRequirment: 24,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Portable_Power.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 12,
     },
     {
       perkId: "fixItGood",
@@ -340,9 +333,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
 
       levelRequirment: 27,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Fix_It_Good.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 13,
     },
     {
       perkId: "batteriesIncluded",
@@ -362,9 +355,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Батареи прилагаются",
       levelRequirment: 28,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Batteries_Included.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 14,
     },
     {
       perkId: "wreckingBall",
@@ -386,9 +379,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Шаровой таран",
       levelRequirment: 29,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Wrecking_ball.png`,
-      modificator: 40,
-      modificatorStep: 40,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 15,
     },
     {
       perkId: "scienceExpert",
@@ -407,9 +400,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Ученый эксперт",
       levelRequirment: 30,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Science_Expert.png`,
-      modificator: 5,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 16,
     },
     {
       perkId: "chemist",
@@ -426,9 +419,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Химик",
       levelRequirment: 34,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Chemist.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 17,
     },
     {
       perkId: "stabilized",
@@ -452,9 +445,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Стабилизация",
       levelRequirment: 36,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Stabilized.png`,
-      modificator: 15,
-      modificatorStep: 15,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 18,
     },
     {
       perkId: "masterHacker",
@@ -470,11 +463,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Мастер Хакер",
       levelRequirment: 38,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Master_Hacker.png`,
-      modificator: 1,
-      modificatorStep: 1,
-      sideModificator: 33,
-      sideModificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 19,
     },
     {
       perkId: "stableTools",
@@ -499,9 +490,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Стабильные инструменты",
       levelRequirment: 39,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Stable_Tools.png`,
-      modificator: 10,
-      modificatorStep: 15,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 20,
     },
     {
       perkId: "scienceMaster",
@@ -521,9 +512,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Ученый мастер",
       levelRequirment: 40,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Science_Master.png`,
-      modificator: 5,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 21,
     },
     {
       perkId: "weaponArtisan",
@@ -546,9 +537,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Мастер-оружейник",
       levelRequirment: 40,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Weapon_Artisan.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 22,
     },
     {
       perkId: "powerSmith",
@@ -572,9 +563,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Кузнец силовой брони",
       levelRequirment: 41,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Power_Smith.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 23,
     },
     {
       perkId: "powerPatcher",
@@ -598,9 +589,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Силовая заплатка",
       levelRequirment: 44,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Power_Patcher.png`,
-      modificator: 20,
-      modificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 24,
     },
     {
       perkId: "nerdRage",
@@ -624,9 +615,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Ярость ботаника",
       levelRequirment: 46,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Nerd_Rage.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 25,
     },
     {
       perkId: "roboticsExpert",
@@ -650,9 +641,9 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Эксперт по роботехнике",
       levelRequirment: 48,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Robotics_Expert.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 26,
     },
     {
       perkId: "powerUser",
@@ -676,11 +667,25 @@ export const useIntelligenceStore = create<PerkStoreData>((set) => ({
       title: "Потребитель энергии",
       levelRequirment: 50,
       iconSource: `${process.env.PUBLIC_URL}/assets/intelligence/FO76_Power_User.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.INTELLIGENCE,
+      order: 27,
     },
   ],
   type: SPECIALS.INTELLIGENCE,
-  // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+  removePerk: (id) =>
+    set((state) => ({
+      ...state,
+      perkList: state.perkList.filter((perk) => perk.perkId !== id),
+    })),
+  addPerk: (perk) => {
+    const perkData = { ...perk };
+    perkData.selectedStars = DEFAULT_AMOUNT_OF_STARS;
+    set((state) => ({
+      ...state,
+      perkList: [...state.perkList, perkData].sort(
+        (perkA, perkB) => perkA.order - perkB.order
+      ),
+    }));
+  },
 }));

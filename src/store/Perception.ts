@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
-import { PerkStoreData } from "../types/Perk";
+import { DEFAULT_AMOUNT_OF_STARS } from "./constants";
 import { SPECIALS } from "../entities/Specials";
+import { PerkStoreData } from "../types/Perk";
 
 export const usePerceptionStore = create<PerkStoreData>((set) => ({
   perkList: [
@@ -27,9 +28,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Стрелок из карабинов",
       levelRequirment: 2,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/Fo4_Rifleman.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 0,
     },
     {
       perkId: "concetratedFire",
@@ -53,11 +54,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Массированный огонь",
       levelRequirment: 2,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Concentrated_Fire.png`,
-      modificator: 10,
-      modificatorStep: 5,
-      sideModificator: 0.01,
-      sideModificatorStep: 0.01,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 1,
     },
     {
       perkId: "archer",
@@ -81,9 +80,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Лучник",
       levelRequirment: 2,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Archer.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 2,
     },
     {
       perkId: "butchersBounty",
@@ -107,9 +106,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Награда мясника",
       levelRequirment: 3,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Butchers_Bounty.png`,
-      modificator: 40,
-      modificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 3,
     },
     {
       perkId: "greenThumb",
@@ -125,9 +124,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Садовник",
       levelRequirment: 4,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Green_Thumb.png`,
-      modificator: 2,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 4,
     },
     {
       perkId: "picklock",
@@ -143,9 +142,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Взломщик",
       levelRequirment: 5,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Picklock.png`,
-      modificator: 10,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 5,
     },
     {
       perkId: "commando",
@@ -169,9 +168,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Коммандос",
       levelRequirment: 5,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Commando.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 6,
     },
     {
       perkId: "fireInTheHole",
@@ -195,10 +194,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Ложись!",
       levelRequirment: 5,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Fire_in_the_Hole.png`,
-      modificator: 15,
-      modificatorStep: 15,
-      maxModificatorStep: 50,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 7,
     },
     {
       perkId: "bowBeforeMe",
@@ -222,11 +220,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Талантливый лучник",
       levelRequirment: 6,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Bow_Before_Me.png`,
-      modificator: 12,
-      modificatorStep: 12,
-      sideModificator: 3,
-      sideModificatorStep: 3,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 8,
     },
     {
       perkId: "crackShot",
@@ -250,9 +246,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Прирожденный стрелок",
       levelRequirment: 7,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Crack_Shot.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 9,
     },
     {
       perkId: "skeetShooter",
@@ -276,9 +272,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Стрельба по тарелкам",
       levelRequirment: 10,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Skeet_Shooter.png`,
-      modificator: 0,
-      modificatorStep: 0,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 10,
     },
     {
       perkId: "pannapictagraphist",
@@ -294,9 +290,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Коллекционер журналов",
       levelRequirment: 12,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Pannapictagraphist.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 11,
     },
     {
       perkId: "exterminator",
@@ -320,9 +316,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Дезинсектор",
       levelRequirment: 14,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Exterminator.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 12,
     },
     {
       perkId: "expertRifleman",
@@ -346,9 +342,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Эксперт по карабинам",
       levelRequirment: 10,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/Fo4_Rifleman.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 13,
     },
     {
       perkId: "expertArcher",
@@ -372,9 +368,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Эксперт лучник",
       levelRequirment: 15,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Archer_Expert.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 14,
     },
     {
       perkId: "perceptiBobble",
@@ -390,9 +386,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Пупсолокатор",
       levelRequirment: 16,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Percepti-bobble.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 15,
     },
     {
       perkId: "groundPounder",
@@ -416,11 +412,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Пехотинец",
       levelRequirment: 18,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Ground_Pounder.png`,
-      modificator: 10,
-      modificatorStep: 10,
-      sideModificator: 0.85,
-      sideModificatorStep: 0.15,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 16,
     },
     {
       perkId: "expertPicklock",
@@ -436,9 +430,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Опытный взломщик",
       levelRequirment: 19,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Expert_Picklock.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 17,
     },
     {
       perkId: "expertCommando",
@@ -462,9 +456,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Эксперт коммандос",
       levelRequirment: 20,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Expert_Commando.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 18,
     },
     {
       perkId: "awareness",
@@ -480,9 +474,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Осведомленность",
       levelRequirment: 20,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Awareness.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 19,
     },
 
     {
@@ -499,9 +493,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Кладоискатель",
       levelRequirment: 22,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Fortune_Finder.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 20,
     },
     {
       perkId: "nightPerson",
@@ -525,9 +519,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Ночное существо",
       levelRequirment: 24,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Night_Person.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 21,
     },
     {
       perkId: "sniper",
@@ -551,9 +545,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Снайпер",
       levelRequirment: 28,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Sniper.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 22,
     },
     {
       perkId: "tankKiller",
@@ -577,11 +571,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Убийца танков",
       levelRequirment: 30,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Tank_Killer.png`,
-      modificator: 12,
-      modificatorStep: 12,
-      sideModificator: 3,
-      sideModificatorStep: 3,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 23,
     },
     {
       perkId: "refractor",
@@ -609,9 +601,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Отражатель",
       levelRequirment: 32,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Refractor.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 24,
     },
     {
       perkId: "glowSight",
@@ -635,9 +627,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Прицел с подсветкой",
       levelRequirment: 33,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Glow_Sight.png`,
-      modificator: 20,
-      modificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 25,
     },
     {
       perkId: "masterRifleman",
@@ -661,9 +653,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Мастер стрелок из карабина",
       levelRequirment: 35,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Master_Rifleman.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 26,
     },
     {
       perkId: "grenadier",
@@ -683,9 +675,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Гренадёр",
       levelRequirment: 35,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Grenadier.png`,
-      modificator: 50,
-      modificatorStep: 50,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 27,
     },
     {
       perkId: "masterArcher",
@@ -709,9 +701,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Мастер лучник",
       levelRequirment: 35,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Archer_Master.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 28,
     },
     {
       perkId: "longShot",
@@ -735,9 +727,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Выстрел с дистанции",
       levelRequirment: 37,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Long_Shot.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 29,
     },
     {
       perkId: "masterCommando",
@@ -761,9 +753,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Мастер коммандос",
       levelRequirment: 40,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Master_Commando.png`,
-      modificator: 10,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 30,
     },
     {
       perkId: "masterLockPick",
@@ -779,9 +771,9 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Эксперт взломщик",
       levelRequirment: 40,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Master_Picklock.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 31,
     },
     {
       perkId: "nightEyes",
@@ -797,11 +789,25 @@ export const usePerceptionStore = create<PerkStoreData>((set) => ({
       title: "Ночное зрение",
       levelRequirment: 50,
       iconSource: `${process.env.PUBLIC_URL}/assets/perception/FO76_Night_Eyes.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.PERCEPTION,
+      order: 32,
     },
   ],
   type: SPECIALS.PERCEPTION,
-  // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+  removePerk: (id) =>
+    set((state) => ({
+      ...state,
+      perkList: state.perkList.filter((perk) => perk.perkId !== id),
+    })),
+  addPerk: (perk) => {
+    const perkData = { ...perk };
+    perkData.selectedStars = DEFAULT_AMOUNT_OF_STARS;
+    set((state) => ({
+      ...state,
+      perkList: [...state.perkList, perkData].sort(
+        (perkA, perkB) => perkA.order - perkB.order
+      ),
+    }));
+  },
 }));

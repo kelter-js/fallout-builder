@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
-import { PerkStoreData } from "../types/Perk";
+import { DEFAULT_AMOUNT_OF_STARS } from "./constants";
 import { SPECIALS } from "../entities/Specials";
+import { PerkStoreData } from "../types/Perk";
 
 export const useEnduranceStore = create<PerkStoreData>((set) => ({
   perkList: [
@@ -27,10 +28,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Свинцовое брюхо",
       levelRequirment: 2,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Lead_Belly.png`,
-      modificator: 30,
-      modificatorStep: 30,
-      maxModificatorStep: 100,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 0,
     },
     {
       perkId: "dromedary",
@@ -55,9 +55,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Верблюд",
       levelRequirment: 3,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Dromedary.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 1,
     },
     {
       perkId: "ironStomach",
@@ -81,9 +81,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Железный желудок",
       levelRequirment: 4,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Iron_Stomach.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 2,
     },
     {
       perkId: "slowMetabolizer",
@@ -108,9 +108,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Медленный метаболизм",
       levelRequirment: 5,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Slow_Metabolizer.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 3,
     },
     {
       perkId: "thirstQuencher",
@@ -135,9 +135,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Утолитель жажды",
       levelRequirment: 6,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Thirst_Quencher.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 4,
     },
     {
       perkId: "goodDoggy",
@@ -154,9 +154,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Хороший пёсик",
       levelRequirment: 8,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Good_Doggy.png`,
-      modificator: 3,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 5,
     },
     {
       perkId: "naturalResistance",
@@ -180,9 +180,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Естественная сопротивляемость",
       levelRequirment: 10,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Natural_Resistance.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 6,
     },
     {
       perkId: "hydroFix",
@@ -203,9 +203,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Подавление жажды",
       levelRequirment: 11,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Hydro_Fix.png`,
-      modificator: 50,
-      modificatorStep: 50,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 7,
     },
     {
       perkId: "rejuvenated",
@@ -226,9 +226,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Обновленный",
       levelRequirment: 12,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Rejuvenated.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 8,
     },
     {
       perkId: "colaNut",
@@ -249,9 +249,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Супер-кола",
       levelRequirment: 14,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Cola_Nut.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 9,
     },
     {
       perkId: "cannibal",
@@ -276,9 +276,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Каннибал",
       levelRequirment: 15,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Cannibal.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 10,
     },
     {
       perkId: "vaccinated",
@@ -303,9 +303,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Вакцинация",
       levelRequirment: 16,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Vaccinated.png`,
-      modificator: 30,
-      modificatorStep: 30,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 11,
     },
     {
       perkId: "munchyResistance",
@@ -326,9 +326,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Чистая жизнь",
       levelRequirment: 17,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Munchy_Resistance.png`,
-      modificator: 50,
-      modificatorStep: 50,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 12,
     },
     {
       perkId: "homebody",
@@ -349,9 +349,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Домосед",
       levelRequirment: 19,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Homebody.png`,
-      modificator: 50,
-      modificatorStep: 50,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 13,
     },
     {
       perkId: "adamantiumSkeleton",
@@ -376,10 +376,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Алмазный скелет",
       levelRequirment: 21,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Adamantium_Skeleton.png`,
-      modificator: 30,
-      modificatorStep: 30,
-
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 14,
     },
     {
       perkId: "solarPowered",
@@ -404,9 +403,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Солнечная батарейка",
       levelRequirment: 22,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Solar_Powered.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 15,
     },
     {
       perkId: "chemFiend",
@@ -431,10 +430,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Чёрт на препаратах",
       levelRequirment: 23,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Chem_Fiend.png`,
-      modificator: 30,
-      modificatorStep: 30,
-
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 16,
     },
     {
       perkId: "aquaboy",
@@ -451,9 +449,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Аквамальчик/Аквадевочка",
       levelRequirment: 26,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Aquaboy.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 17,
     },
     {
       perkId: "fireproof",
@@ -478,9 +476,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Огнеупорный",
       levelRequirment: 27,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Fireproof.png`,
-      modificator: 15,
-      modificatorStep: 15,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 18,
     },
     {
       perkId: "nocturnalFortitude",
@@ -501,9 +499,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Ночная отвага",
       levelRequirment: 29,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Nocturnal_Fortitude.png`,
-      modificator: 20,
-      modificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 19,
     },
     {
       perkId: "ironclad",
@@ -535,9 +533,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Броненосец",
       levelRequirment: 30,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Ironclad.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 20,
     },
     {
       perkId: "revenant",
@@ -558,9 +556,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Выживший",
       levelRequirment: 32,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Revenant.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 21,
     },
     {
       perkId: "radResistant",
@@ -589,9 +587,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Рад-сопротивляемость",
       levelRequirment: 34,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Rad_Resistant.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 22,
     },
     {
       perkId: "ghoulish",
@@ -616,9 +614,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Гулификация",
       levelRequirment: 36,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Ghoulish.png`,
-      modificator: 0.5,
-      modificatorStep: 0.5,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 23,
     },
     {
       perkId: "radicool",
@@ -635,9 +633,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Радикрутость",
       levelRequirment: 38,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Radicool.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 24,
     },
     {
       perkId: "professionalDrinker",
@@ -654,9 +652,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Профессиональный алкоголик",
       levelRequirment: 39,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Professional_Drinker.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 25,
     },
     {
       perkId: "allNightLong",
@@ -680,9 +678,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Всю ночь",
       levelRequirment: 41,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_All_Night_Long.png`,
-      modificator: 20,
-      modificatorStep: 20,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 26,
     },
     {
       perkId: "chemResistant",
@@ -703,10 +701,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Чистая жизнь",
       levelRequirment: 43,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Chem_Resistant.png`,
-      modificator: 50,
-      modificatorStep: 50,
-
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 27,
     },
     {
       perkId: "sunKissed",
@@ -727,10 +724,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Поцелованный солнцем",
       levelRequirment: 45,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Sun_Kissed.png`,
-      modificator: 1,
-      modificatorStep: 1,
-
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 28,
     },
     {
       perkId: "photoSynthetic",
@@ -751,10 +747,9 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Фотосинтез",
       levelRequirment: 47,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Photosynthetic.png`,
-      modificator: 1,
-      modificatorStep: 1,
-
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 29,
     },
     {
       perkId: "lifegiver",
@@ -778,12 +773,26 @@ export const useEnduranceStore = create<PerkStoreData>((set) => ({
       title: "Фонтан жизни",
       levelRequirment: 50,
       iconSource: `${process.env.PUBLIC_URL}/assets/endurance/FO76_Lifegiver.png`,
-      modificator: 15,
-      modificatorStep: 15,
       selectedStars: 1,
+      type: SPECIALS.ENDURANCE,
+      order: 30,
       initialCost: 2,
     },
   ],
   type: SPECIALS.ENDURANCE,
-  // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+  removePerk: (id) =>
+    set((state) => ({
+      ...state,
+      perkList: state.perkList.filter((perk) => perk.perkId !== id),
+    })),
+  addPerk: (perk) => {
+    const perkData = { ...perk };
+    perkData.selectedStars = DEFAULT_AMOUNT_OF_STARS;
+    set((state) => ({
+      ...state,
+      perkList: [...state.perkList, perkData].sort(
+        (perkA, perkB) => perkA.order - perkB.order
+      ),
+    }));
+  },
 }));

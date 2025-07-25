@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
-import { PerkStoreData } from "../types/Perk";
+import { DEFAULT_AMOUNT_OF_STARS } from "./constants";
 import { SPECIALS } from "../entities/Specials";
+import { PerkStoreData } from "../types/Perk";
 
 export const useCharismaStore = create<PerkStoreData>((set) => ({
   perkList: [
@@ -27,9 +28,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Прирожденный лидер",
       levelRequirment: 2,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Inspirational.png`,
-      modificator: 5,
-      modificatorStep: 5,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 0,
     },
     {
       perkId: "happyCamper",
@@ -49,9 +50,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Весёлый турист",
       levelRequirment: 3,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Happy_Camper.png`,
-      modificator: 40,
-      modificatorStep: 40,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 1,
     },
     {
       perkId: "loneWanderer",
@@ -75,12 +76,10 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Одинокий путник",
       levelRequirment: 4,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Lone_Wanderer.png`,
-      modificator: 10,
-      modificatorStep: 5,
-      sideModificator: 10,
-      sideModificatorStep: 10,
       initialCost: 2,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 2,
     },
     {
       perkId: "bodyguards",
@@ -108,9 +107,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Телохранители",
       levelRequirment: 5,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Bodyguards.png`,
-      modificator: 18,
-      modificatorStep: 6,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 3,
     },
     {
       perkId: "hardBargain",
@@ -134,9 +133,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Любитель поторговаться",
       levelRequirment: 7,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Hard_Bargain.png`,
-      modificator: 3,
-      modificatorStep: 3,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 4,
     },
     {
       perkId: "EMT",
@@ -160,10 +159,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Скорая помощь",
       levelRequirment: 9,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_E.M.T.png`,
-      modificator: 15,
-      modificatorStep: 15,
-      maxModificatorStep: 60,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 5,
     },
     {
       perkId: "bloodsucker",
@@ -187,9 +185,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Кровосос",
       levelRequirment: 11,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Bloodsucker.png`,
-      modificator: 50,
-      modificatorStep: 50,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 6,
     },
     {
       perkId: "magneticPersonality",
@@ -210,9 +208,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Притягательная личность",
       levelRequirment: 13,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Magnetic_Personality.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 7,
     },
     {
       perkId: "fieldSurgeon",
@@ -228,9 +226,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Полевой хирург",
       levelRequirment: 15,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Field_Surgeon.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 8,
       initialCost: 2,
     },
     {
@@ -252,9 +250,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Беззаботность",
       levelRequirment: 17,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Happy-Go-Lucky.png`,
-      modificator: 2,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 9,
     },
     {
       perkId: "injector",
@@ -279,9 +277,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Инъектор",
       levelRequirment: 19,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Injector.png`,
-      modificator: 6,
-      modificatorStep: 6,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 10,
     },
     {
       perkId: "teamMedic",
@@ -305,9 +303,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Командный медик",
       levelRequirment: 20,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Team_Medic.png`,
-      modificator: 50,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 11,
     },
     {
       perkId: "quackSurgeon",
@@ -323,9 +321,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Хирург-шарлатан",
       levelRequirment: 22,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Quack_Surgeon.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 12,
     },
     {
       perkId: "partyBoyGirl",
@@ -345,9 +343,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Тусовщик",
       levelRequirment: 24,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Party_Boy.png`,
-      modificator: 2,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 13,
       initialCost: 2,
     },
     {
@@ -365,9 +363,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Турагент",
       levelRequirment: 26,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Travel_Agent.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 14,
     },
     {
       perkId: "healingHands",
@@ -383,9 +381,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Лечащие руки",
       levelRequirment: 28,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Healing_Hands.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 15,
     },
     {
       perkId: "animalFriend",
@@ -410,9 +408,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Друг животных",
       levelRequirment: 30,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Animal_Friend.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 16,
     },
     {
       perkId: "overlyGenerous",
@@ -433,9 +431,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Излишне щедрый",
       levelRequirment: 32,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Overly_Generous.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 17,
     },
     {
       perkId: "antiEpidemic",
@@ -455,9 +453,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Борьба с эпидемией",
       levelRequirment: 34,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Anti-Epidemic.png`,
-      modificator: 50,
-      modificatorStep: 50,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 18,
     },
     {
       perkId: "spiritualHealer",
@@ -481,9 +479,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Духовный целитель",
       levelRequirment: 36,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Spiritual_Healer.png`,
-      modificator: 5,
-      modificatorStep: 2,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 19,
     },
     {
       perkId: "squadManuevers",
@@ -504,9 +502,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Отрядные манёвры",
       levelRequirment: 37,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Squad_Maneuvers.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 20,
     },
     {
       perkId: "philanthropist",
@@ -531,9 +529,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Филантроп",
       levelRequirment: 39,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Philanthropist.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 21,
     },
     {
       perkId: "suppressor",
@@ -558,9 +556,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Глушитель",
       levelRequirment: 40,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Suppressor.png`,
-      modificator: 10,
-      modificatorStep: 10,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 22,
     },
     {
       perkId: "strangeInNumbers",
@@ -577,9 +575,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Толпа странных",
       levelRequirment: 42,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Strange_in_Numbers.png`,
-      modificator: 1,
-      modificatorStep: 1,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 23,
     },
     {
       perkId: "radSponge",
@@ -604,9 +602,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Поглотитель радиации",
       levelRequirment: 44,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Rad_Sponge.png`,
-      modificator: 80,
-      modificatorStep: 60,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 24,
     },
     {
       perkId: "tenderizer",
@@ -631,11 +629,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Отбивной молоток",
       levelRequirment: 46,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Tenderizer.png`,
-      modificator: 5,
-      modificatorStep: 2,
-      sideModificator: 5,
-      sideModificatorStep: 2,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 25,
     },
     {
       perkId: "friendlyFire",
@@ -659,9 +655,9 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Дружественный огонь",
       levelRequirment: 48,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/FO76_Friendly_Fire.png`,
-      modificator: 6,
-      modificatorStep: 3,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 26,
     },
     {
       perkId: "wastelandWhisperer",
@@ -685,11 +681,25 @@ export const useCharismaStore = create<PerkStoreData>((set) => ({
       title: "Говорящий с пустошью",
       levelRequirment: 50,
       iconSource: `${process.env.PUBLIC_URL}/assets/charisma/Fo4_Wasteland_Whisperer.png`,
-      modificator: 25,
-      modificatorStep: 25,
       selectedStars: 1,
+      type: SPECIALS.CHARISMA,
+      order: 27,
     },
   ],
   type: SPECIALS.CHARISMA,
-  // increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+  removePerk: (id) =>
+    set((state) => ({
+      ...state,
+      perkList: state.perkList.filter((perk) => perk.perkId !== id),
+    })),
+  addPerk: (perk) => {
+    const perkData = { ...perk };
+    perkData.selectedStars = DEFAULT_AMOUNT_OF_STARS;
+    set((state) => ({
+      ...state,
+      perkList: [...state.perkList, perkData].sort(
+        (perkA, perkB) => perkA.order - perkB.order
+      ),
+    }));
+  },
 }));
