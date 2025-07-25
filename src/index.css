@@ -1,9 +1,33 @@
 html {
-  --main-color: #211a12;
+  --main-color: #1e1e1e;
   --font-family: "Be Vietnam Pro", sans-serif;
-  --tag-color: #473624;
+  --tag-color: #2a2f30;
   --white: #fff;
-  --text-color: #c7ad94;
+  --text-color: #d0d0d0;
+  --text-primary: #f0f0f0;
+  --light-grey: rgba(255, 255, 255, 0.8);
+  --light-blue: #1976d2;
+  --main-text-shadow: rgba(0, 0, 0, 0.5);
+  --gradient-start: #1a1a2e;
+  --gradient-mid1: #16213e;
+  --gradient-mid2: #3d1e3a;
+  --gradient-end: #211a12;
+
+  --hover-gradient-start: #2a2a4a;
+  --hover-gradient-mid1: #1a2a5a;
+  --hover-gradient-mid2: #4d2a4a;
+  --hover-gradient-end: #312a22;
+
+  --box-shadow-color: rgba(148, 255, 199, 0.3);
+  --box-shadow-hover-color: rgba(148, 255, 199, 0.6);
+  --error-color: #ff3b30;
+  --image-bg: rgba(0, 0, 0, 0.05);
+  --level-color: #f5cb42;
+  --level-glow: rgba(245, 203, 66, 0.7);
+  --level-border-inner: rgba(245, 203, 66, 0.3);
+  --level-text-shadow: rgba(245, 203, 66, 0.8);
+  --tag-hover: #5a8a7a;
+  --tag-text: #e0e0e0;
 }
 
 body {
@@ -23,4 +47,24 @@ code {
 
 * {
   box-sizing: border-box;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
 }
