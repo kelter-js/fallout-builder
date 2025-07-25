@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+
 import {
   useAgilityStore,
   useCharismaStore,
@@ -11,34 +12,51 @@ import {
 import { SPECIALS } from "../entities/Specials";
 
 export const usePerksStore = (currentSpecial: SPECIALS) => {
-  const { perkList: agilityPerkList, type: agility } = useAgilityStore();
-  const { perkList: charismaPerkList, type: charisma } = useCharismaStore();
-  const { perkList: endurancePerkList, type: endurance } = useEnduranceStore();
-  const { perkList: intelligencePerkList, type: intelligence } =
-    useIntelligenceStore();
-  const { perkList: luckPerkList, type: luck } = useLuckStore();
-  const { perkList: perceptionPerkList, type: perception } =
-    usePerceptionStore();
-  const { perkList: strengthPerkList, type: strength } = useStrengthStore();
+  const { type: agility, ...restAgility } = useAgilityStore();
+  const { type: charisma, ...restCharisma } = useCharismaStore();
+  const { type: endurance, ...restEndurance } = useEnduranceStore();
+  const { type: intelligence, ...restIntelligence } = useIntelligenceStore();
+  const { type: luck, ...restLuck } = useLuckStore();
+  const { type: perception, ...restPerception } = usePerceptionStore();
+  const { type: strength, ...restStrength } = useStrengthStore();
 
-  const currentPerks = useMemo(() => {
+  const allAddCallbacks = {
+    [SPECIALS.STRENGTH]: restStrength.addPerk,
+    [SPECIALS.PERCEPTION]: restPerception.addPerk,
+    [SPECIALS.ENDURANCE]: restEndurance.addPerk,
+    [SPECIALS.CHARISMA]: restCharisma.addPerk,
+    [SPECIALS.INTELLIGENCE]: restIntelligence.addPerk,
+    [SPECIALS.AGILITY]: restAgility.addPerk,
+    [SPECIALS.LUCK]: restLuck.addPerk,
+  };
+
+  return useMemo(() => {
     switch (currentSpecial) {
       case agility:
-        return agilityPerkList;
+        return { ...restAgility, allAddCallbacks };
       case charisma:
-        return charismaPerkList;
+        return { ...restCharisma, allAddCallbacks };
       case endurance:
-        return endurancePerkList;
+        return { ...restEndurance, allAddCallbacks };
       case intelligence:
-        return intelligencePerkList;
+        return { ...restIntelligence, allAddCallbacks };
       case luck:
-        return luckPerkList;
+        return { ...restLuck, allAddCallbacks };
       case perception:
-        return perceptionPerkList;
+        return { ...restPerception, allAddCallbacks };
       case strength:
-        return strengthPerkList;
+        return { ...restStrength, allAddCallbacks };
+      default:
+        return { ...restStrength, allAddCallbacks };
     }
-  }, [currentSpecial]);
-
-  return currentPerks;
+  }, [
+    currentSpecial,
+    restAgility.perkList,
+    restCharisma.perkList,
+    restEndurance.perkList,
+    restIntelligence.perkList,
+    restLuck.perkList,
+    restPerception.perkList,
+    restStrength.perkList,
+  ]);
 };
