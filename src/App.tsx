@@ -1,38 +1,51 @@
-import { Calculator } from "./components/Calculator";
-import { SearchFeed } from "./components/SearchFeed";
-import { Container } from "./components/Container";
-import { Header } from "./components/Header";
-import { SpecialTags } from "./SpecialTags";
 import { useMemo, useState } from "react";
-import { SPECIALS } from "./entities/Specials";
+import { Box, Typography } from "@mui/material";
+
+import {
+  SpecialCard,
+  SpecialTags,
+  Calculator,
+  SearchFeed,
+  Container,
+  Header,
+} from "./components";
+
 import { usePerksStore } from "./hooks/usePerksStore";
-import { Card, CardContent, CardMedia, Stack, Typography } from "@mui/material";
+import { useCharacterStore } from "./store/Character";
+import { SPECIALS } from "./entities/Specials";
 
 const App = () => {
   const [selectedTag, setSelectedTag] = useState<SPECIALS>(SPECIALS.STRENGTH);
   const [search, setSearch] = useState("");
 
-  const selectedPerks = usePerksStore(selectedTag);
-  console.log(selectedPerks);
+  const { perkList, removePerk, addPerk, allAddCallbacks } =
+    usePerksStore(selectedTag);
+  const { selectedPerks } = useCharacterStore();
 
   const renderCards = useMemo(() => {
-    if (search && selectedPerks) {
-      return selectedPerks.filter((perks) =>
+    if (search && perkList) {
+      return perkList.filter((perks) =>
         perks.title.toLowerCase().includes(search.toLowerCase())
       );
     }
 
-    return selectedPerks;
-  }, [search, selectedPerks]);
+    return perkList;
+  }, [search, perkList]);
 
-  console.log("renderCards", renderCards);
+  const perks = useMemo(
+    () =>
+      renderCards?.map((item) => (
+        <SpecialCard key={item.perkId} {...item} removePerk={removePerk} />
+      )),
+    [renderCards, removePerk, allAddCallbacks]
+  );
 
   return (
-    <div className="App">
+    <div>
       <Header />
 
       <Container>
-        <Calculator />
+        <Calculator selectedPerks={selectedPerks} addPerk={allAddCallbacks} />
 
         <SpecialTags
           selectedTag={selectedTag}
@@ -41,29 +54,23 @@ const App = () => {
 
         <SearchFeed search={search} setSearch={setSearch} />
 
-        <Stack direction="row" gap={2} flexWrap="wrap">
-          {renderCards?.map((item, index) => (
-            <Card
-              sx={{ maxWidth: "15.69%", background: "var(--text-color)" }}
-              key={index}
-            >
-              <CardMedia
-                sx={{ width: "100%", height: 250, objectFit: "contain" }}
-                image={item.iconSource}
-                title="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {item.title}
-                </Typography>
-                <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  {item.getDescriptionBasedOnStars(item.selectedStars)}
-                </Typography>
-              </CardContent>
-            </Card>
-          ))}
-        </Stack>
+        <Box gap={2} display="grid" gridTemplateColumns="repeat(5, 1fr)">
+          {perks}
+        </Box>
       </Container>
+
+      <Box
+        mt={4}
+        p={4}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        borderTop="1px solid var(--white)"
+      >
+        <Typography color="var(--light-grey)" lineHeight={1.4} variant="h5">
+          created by kelter
+        </Typography>
+      </Box>
     </div>
   );
 };

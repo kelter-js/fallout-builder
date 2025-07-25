@@ -1,8 +1,8 @@
-import { useState, ChangeEventHandler, FC } from "react";
-import { InputAdornment, TextField } from "@mui/material";
+import { ChangeEventHandler, FC } from "react";
+import { InputAdornment } from "@mui/material";
 
-import { Container, Title } from "./SearchFeed.styled";
 import { SearchFeedProps } from "./types";
+import { Container, Input, Title } from "./SearchFeed.styled";
 
 export const SearchFeed: FC<SearchFeedProps> = ({ search, setSearch }) => {
   const handleSearch: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -13,28 +13,8 @@ export const SearchFeed: FC<SearchFeedProps> = ({ search, setSearch }) => {
 
   return (
     <Container>
-      <TextField
+      <Input
         fullWidth
-        sx={{
-          bgcolor: "var(--tag-color)",
-          borderRadius: (theme) => theme.spacing(1),
-          marginTop: (theme) => theme.spacing(3),
-          input: {
-            fontFamily: "var(--font-family)",
-            fontWeight: 400,
-            fontSize: "16px",
-            lineHeight: "24px",
-            color: "var(--text-color)",
-
-            "&::placeholder": {
-              fontFamily: "var(--font-family)",
-              fontWeight: 400,
-              fontSize: "16px",
-              lineHeight: "24px",
-              color: "var(--text-color)",
-            },
-          },
-        }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
